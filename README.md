@@ -198,4 +198,4 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 ---
 
-**Desenvolvido com ❤️ por [Seu Nome]**
+**Desenvolvido com ❤️ por Iraquian Rodrigues**
