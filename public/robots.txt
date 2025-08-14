@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://iraquian-portfolio.vercel.app/sitemap.xml
+
+# Crawl-delay para evitar sobrecarga
+Crawl-delay: 1
+
+# Permitir indexação de todas as páginas
+Disallow:
+
+# Otimizações para Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+# Otimizações para Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0.5

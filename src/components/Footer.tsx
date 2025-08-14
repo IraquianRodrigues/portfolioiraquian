@@ -18,7 +18,7 @@ const Footer = () => {
                         viewport={{ once: true }}
                         className="space-y-4"
                     >
-                        <h3 className="text-2xl font-bold gradient-text">Seu Nome</h3>
+                        <h3 className="text-2xl font-bold gradient-text">Iraquian Rodrigues</h3>
                         <p className="text-gray-400 leading-relaxed">
                             Desenvolvedor Full Stack apaixonado por criar experiências digitais
                             incríveis e soluções inovadoras.

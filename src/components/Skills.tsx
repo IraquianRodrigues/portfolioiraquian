@@ -7,30 +7,53 @@ const Skills = () => {
     {
       title: 'Frontend',
       skills: [
-        { name: 'React', level: 50 },
-        { name: 'Next.js', level: 60 },
-        { name: 'TypeScript', level: 50 },
-        { name: 'JavaScript', level: 50 },
-        { name: 'HTML/CSS', level: 70 },
-        { name: 'Tailwind CSS', level: 60 }
+        { name: 'React', level: 'Intermediário' },
+        { name: 'Next.js', level: 'Intermediário' },
+        { name: 'TypeScript', level: 'Intermediário' },
+        { name: 'JavaScript', level: 'Intermediário' },
+        { name: 'HTML/CSS', level: 'Avançado' },
+        { name: 'Tailwind CSS', level: 'Intermediário' }
       ]
     },
     {
       title: 'Backend',
       skills: [
-        { name: 'Node.js', level: 50 },
-        { name: 'PostgreSQL', level: 50 },
-        { name: 'REST APIs', level: 50 },
+        { name: 'Node.js', level: 'Intermediário' },
+        { name: 'PostgreSQL', level: 'Intermediário' },
+        { name: 'REST APIs', level: 'Intermediário' },
       ]
     },
     {
       title: 'Ferramentas',
       skills: [
-        { name: 'Git', level: 70 },
-        { name: 'VS Code', level: 90 },
+        { name: 'Git', level: 'Avançado' },
+        { name: 'VS Code', level: 'Expert' },
       ]
     }
   ];
+
+  const getLevelColor = (level: string) => {
+    switch (level) {
+      case 'Iniciante':
+        return 'bg-blue-500';
+      case 'Intermediário':
+        return 'bg-purple-500';
+      case 'Avançado':
+        return 'bg-orange-500';
+      case 'Expert':
+        return 'bg-green-500';
+      default:
+        return 'bg-gray-500';
+    }
+  };
+
+  const getLevelBadge = (level: string) => {
+    return (
+      <span className={`px-3 py-1 rounded-full text-xs font-medium text-white ${getLevelColor(level)}`}>
+        {level}
+      </span>
+    );
+  };
 
   return (
     <section id="skills" className="section-padding">
@@ -73,25 +96,12 @@ const Skills = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: categoryIndex * 0.2 + skillIndex * 0.1 }}
                     viewport={{ once: true }}
+                    className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
                   >
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                        {skill.name}
-                      </span>
-                      <span className="text-sm text-gray-500 dark:text-gray-400">
-                        {skill.level}%
-                      </span>
-                    </div>
-
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: categoryIndex * 0.2 + skillIndex * 0.1 }}
-                        viewport={{ once: true }}
-                        className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full"
-                      />
-                    </div>
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {skill.name}
+                    </span>
+                    {getLevelBadge(skill.level)}
                   </motion.div>
                 ))}
               </div>
