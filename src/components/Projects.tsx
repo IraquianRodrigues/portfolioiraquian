@@ -9,7 +9,7 @@ const Projects = () => {
             title: 'AgendiFy',
             description: 'Plataforma completa de agendamentos de serviços de estética, pagamentos e painel administrativo.',
             image: '/portfolio.png',
-            technologies: ['React', 'Next.js', 'TypeScript', 'Stripe', 'PostgreSQL', 'Tailwind'],
+            technologies: ['React', 'Next.js', 'TypeScript', 'Stripe', 'NeonDB', 'Tailwind'],
             liveUrl: 'https://agendify-rho.vercel.app',
             githubUrl: 'https://github.com/IraquianRodrigues/agendify',
             featured: true
