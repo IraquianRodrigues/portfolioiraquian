@@ -21,7 +21,7 @@ const Projects = () => {
             technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
             liveUrl: 'https://cynthianicole.vercel.app',
             githubUrl: 'https://github.com/IraquianRodrigues/cynthianicole',
-            featured: true
+            featured: false
         },
         {
             title: 'Linktree peça+açai',
@@ -31,6 +31,15 @@ const Projects = () => {
             liveUrl: 'https://linktree-alpha-sand.vercel.app',
             githubUrl: 'https://github.com/IraquianRodrigues/linktree',
             featured: false
+        },
+        {
+            title: 'Pizzaria Familia',
+            description: 'Cardápio digital para pizzaria com sistema de pedidos via WhatsApp.',
+            image: '/cardapio.png',
+            technologies: ['Next.js', 'TypeScript', 'Framer Motion', 'Tailwind CSS'],
+            liveUrl: 'https://pizzaria-familia.vercel.app',
+            githubUrl: 'https://github.com/IraquianRodrigues/PizzariaFamilia',
+            featured: true
         }
     ];
 
