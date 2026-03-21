@@ -70,8 +70,8 @@ export const metadata: Metadata = {
   classification: 'Portfolio',
   viewport: "width=device-width, initial-scale=1",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f172a" }
+    { media: "(prefers-color-scheme: light)", color: "#f97316" },
+    { media: "(prefers-color-scheme: dark)", color: "#050505" }
   ],
   manifest: '/manifest.json',
   icons: {
@@ -99,7 +99,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <meta name="google-site-verification" content="your-verification-code" />
       </head>
-      <body className={`${inter.className} bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased`}>
+      <body className={`${inter.className} bg-orange-50 dark:bg-black text-neutral-900 dark:text-neutral-100 antialiased`}>
         {children}
       </body>
     </html>

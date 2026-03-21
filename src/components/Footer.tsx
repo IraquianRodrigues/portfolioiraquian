@@ -7,7 +7,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-gray-900 dark:bg-black text-white">
+        <footer className="bg-black text-white">
             <div className="container-custom section-padding">
                 <div className="grid md:grid-cols-3 gap-8 mb-8">
                     {/* Brand */}
@@ -19,7 +19,7 @@ const Footer = () => {
                         className="space-y-4"
                     >
                         <h3 className="text-2xl font-bold gradient-text">Iraquian Rodrigues</h3>
-                        <p className="text-gray-400 leading-relaxed">
+                        <p className="text-neutral-400 leading-relaxed">
                             Desenvolvedor Full Stack apaixonado por criar experiências digitais
                             incríveis e soluções inovadoras.
                         </p>
@@ -36,27 +36,27 @@ const Footer = () => {
                         <h4 className="text-lg font-semibold">Links Rápidos</h4>
                         <ul className="space-y-2">
                             <li>
-                                <a href="#home" className="text-gray-400 hover:text-white transition-colors">
+                                <a href="#home" className="text-neutral-400 hover:text-orange-400 transition-colors">
                                     Início
                                 </a>
                             </li>
                             <li>
-                                <a href="#about" className="text-gray-400 hover:text-white transition-colors">
+                                <a href="#about" className="text-neutral-400 hover:text-orange-400 transition-colors">
                                     Sobre
                                 </a>
                             </li>
                             <li>
-                                <a href="#projects" className="text-gray-400 hover:text-white transition-colors">
+                                <a href="#projects" className="text-neutral-400 hover:text-orange-400 transition-colors">
                                     Projetos
                                 </a>
                             </li>
                             <li>
-                                <a href="#skills" className="text-gray-400 hover:text-white transition-colors">
+                                <a href="#skills" className="text-neutral-400 hover:text-orange-400 transition-colors">
                                     Habilidades
                                 </a>
                             </li>
                             <li>
-                                <a href="#contact" className="text-gray-400 hover:text-white transition-colors">
+                                <a href="#contact" className="text-neutral-400 hover:text-orange-400 transition-colors">
                                     Contato
                                 </a>
                             </li>
@@ -72,7 +72,7 @@ const Footer = () => {
                         className="space-y-4"
                     >
                         <h4 className="text-lg font-semibold">Contato</h4>
-                        <div className="space-y-2 text-gray-400">
+                        <div className="space-y-2 text-neutral-400">
                             <p>iraquianrodrigues@gmail.com</p>
                             <p>+84 999642564</p>
                             <p>Mossoró, RN - Brasil</p>
@@ -86,15 +86,15 @@ const Footer = () => {
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
                     viewport={{ once: true }}
-                    className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
+                    className="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center"
                 >
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-neutral-400 text-sm">
                         © {currentYear} Iraquian Rodrigues. Todos os direitos reservados.
                     </p>
 
-                    <div className="flex items-center gap-2 text-gray-400 text-sm mt-4 md:mt-0">
+                    <div className="flex items-center gap-2 text-neutral-400 text-sm mt-4 md:mt-0">
                         <span>Feito com</span>
-                        <Heart size={16} className="text-red-500" />
+                        <Heart size={16} className="text-orange-500" />
                         <span>em React & Next.js</span>
                     </div>
                 </motion.div>

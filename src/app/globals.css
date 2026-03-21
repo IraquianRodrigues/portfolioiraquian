@@ -5,18 +5,18 @@
 /* Variáveis CSS personalizadas para melhor performance */
 :root {
   --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --color-primary: #3b82f6;
-  --color-secondary: #8b5cf6;
-  --color-accent: #06b6d4;
+  --color-primary: #f97316;
+  --color-secondary: #ea580c;
+  --color-accent: #fb923c;
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
-  --color-text-primary: #111827;
-  --color-text-secondary: #6b7280;
-  --color-bg-primary: #f8fafc;
-  --color-bg-secondary: #e2e8f0;
-  --color-bg-dark: #0f172a;
-  --color-bg-dark-secondary: #1e293b;
+  --color-text-primary: #171717;
+  --color-text-secondary: #525252;
+  --color-bg-primary: #fff7ed;
+  --color-bg-secondary: #fed7aa;
+  --color-bg-dark: #050505;
+  --color-bg-dark-secondary: #171717;
   --transition-fast: 150ms ease-in-out;
   --transition-normal: 300ms ease-in-out;
   --transition-slow: 500ms ease-in-out;
@@ -127,7 +127,7 @@
   }
   
   .button-secondary {
-    border: 2px solid var(--color-bg-secondary);
+    border: 2px solid var(--color-primary);
     color: var(--color-text-primary);
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
@@ -138,7 +138,8 @@
   }
   
   .button-secondary:hover {
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-primary);
+    color: #ffffff;
     border-color: var(--color-primary);
   }
 

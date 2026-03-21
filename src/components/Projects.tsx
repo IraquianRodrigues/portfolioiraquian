@@ -59,7 +59,7 @@ const Projects = () => {
     ];
 
     return (
-        <section id="projects" className="section-padding bg-gray-50 dark:bg-gray-800">
+        <section id="projects" className="section-padding bg-orange-50 dark:bg-black">
             <div className="container-custom">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
@@ -90,9 +90,9 @@ const Projects = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: index * 0.2 }}
                                 viewport={{ once: true }}
-                                className="card-hover bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg"
+                                className="card-hover bg-white dark:bg-neutral-900 rounded-xl overflow-hidden shadow-lg border border-orange-100 dark:border-neutral-800"
                             >
-                                <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center overflow-hidden">
+                                <div className="h-48 bg-gradient-to-br from-orange-500 to-black flex items-center justify-center overflow-hidden">
                                     {project.images && project.images.length > 1 ? (
                                         <div className="grid grid-cols-2 w-full h-full">
                                             {project.images.slice(0, 2).map((image, imageIndex) => (
@@ -133,7 +133,7 @@ const Projects = () => {
                                         {project.technologies.map((tech) => (
                                             <span
                                                 key={tech}
-                                                className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm"
+                                                className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm"
                                             >
                                                 {tech}
                                             </span>
@@ -141,8 +141,8 @@ const Projects = () => {
                                     </div>
 
                                     {project.demoAccess && (
-                                        <div className="mb-6 p-4 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-900/40">
-                                            <p className="text-sm font-semibold text-emerald-700 dark:text-emerald-300 mb-2">
+                                        <div className="mb-6 p-4 rounded-lg bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-900/40">
+                                            <p className="text-sm font-semibold text-orange-700 dark:text-orange-300 mb-2">
                                                 Acesso Demo
                                             </p>
                                             <p className="text-sm text-gray-700 dark:text-gray-300">
@@ -203,9 +203,9 @@ const Projects = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: index * 0.1 }}
                                 viewport={{ once: true }}
-                                className="card-hover bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg"
+                                className="card-hover bg-white dark:bg-neutral-900 rounded-xl overflow-hidden shadow-lg border border-orange-100 dark:border-neutral-800"
                             >
-                                <div className="h-40 bg-gradient-to-br from-green-500 to-blue-600 flex items-center justify-center overflow-hidden">
+                                <div className="h-40 bg-gradient-to-br from-orange-500 to-black flex items-center justify-center overflow-hidden">
                                     {(project.image || project.images?.[0]) && (project.image || project.images?.[0]) !== '/api/placeholder/400/250' ? (
                                         <img
                                             src={project.image || project.images?.[0]}
@@ -230,13 +230,13 @@ const Projects = () => {
                                         {project.technologies.slice(0, 3).map((tech) => (
                                             <span
                                                 key={tech}
-                                                className="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded text-xs"
+                                                className="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded text-xs"
                                             >
                                                 {tech}
                                             </span>
                                         ))}
                                         {project.technologies.length > 3 && (
-                                            <span className="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded text-xs">
+                                            <span className="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded text-xs">
                                                 +{project.technologies.length - 3}
                                             </span>
                                         )}

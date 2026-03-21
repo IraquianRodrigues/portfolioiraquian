@@ -28,7 +28,7 @@ const About = () => {
     ];
 
     return (
-        <section id="about" className="section-padding bg-gray-50 dark:bg-gray-800">
+        <section id="about" className="section-padding bg-orange-50 dark:bg-black">
             <div className="container-custom">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
@@ -90,11 +90,11 @@ const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 viewport={{ once: true }}
-                                className="card-hover p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg"
+                                className="card-hover p-6 bg-white dark:bg-neutral-900 rounded-xl shadow-lg border border-orange-100 dark:border-neutral-800"
                             >
                                 <div className="flex items-center mb-4">
-                                    <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg mr-4">
-                                        <interest.icon className="text-blue-600 dark:text-blue-400" size={24} />
+                                    <div className="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-lg mr-4">
+                                        <interest.icon className="text-orange-600 dark:text-orange-400" size={24} />
                                     </div>
                                     <h4 className="font-semibold text-gray-900 dark:text-gray-100">
                                         {interest.title}

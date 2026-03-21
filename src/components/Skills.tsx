@@ -35,15 +35,15 @@ const Skills = () => {
   const getLevelColor = (level: string) => {
     switch (level) {
       case 'Iniciante':
-        return 'bg-blue-500';
+        return 'bg-orange-400';
       case 'Intermediário':
-        return 'bg-purple-500';
-      case 'Avançado':
         return 'bg-orange-500';
+      case 'Avançado':
+        return 'bg-orange-600';
       case 'Expert':
-        return 'bg-green-500';
+        return 'bg-neutral-900';
       default:
-        return 'bg-gray-500';
+        return 'bg-neutral-700';
     }
   };
 
@@ -82,7 +82,7 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: categoryIndex * 0.2 }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg"
+              className="bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-lg border border-orange-100 dark:border-neutral-800"
             >
               <h3 className="text-xl font-semibold mb-6 text-center">
                 {category.title}
@@ -96,7 +96,7 @@ const Skills = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: categoryIndex * 0.2 + skillIndex * 0.1 }}
                     viewport={{ once: true }}
-                    className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
+                    className="flex justify-between items-center p-3 bg-orange-50 dark:bg-neutral-800 rounded-lg"
                   >
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       {skill.name}

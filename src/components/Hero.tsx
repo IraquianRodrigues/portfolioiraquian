@@ -4,6 +4,17 @@ import { motion } from 'framer-motion';
 import { Download, Github, Linkedin, Mail } from 'lucide-react';
 
 const Hero = () => {
+    const particles = [
+        { left: '8%', top: '15%', size: 8, duration: 7, delay: 0, color: 'bg-orange-500/40' },
+        { left: '18%', top: '75%', size: 6, duration: 9, delay: 1, color: 'bg-black/30 dark:bg-orange-400/30' },
+        { left: '30%', top: '25%', size: 10, duration: 8, delay: 0.5, color: 'bg-orange-400/35' },
+        { left: '42%', top: '65%', size: 7, duration: 10, delay: 1.5, color: 'bg-black/25 dark:bg-orange-300/25' },
+        { left: '56%', top: '18%', size: 9, duration: 7.5, delay: 0.8, color: 'bg-orange-500/45' },
+        { left: '67%', top: '72%', size: 6, duration: 9.5, delay: 2.2, color: 'bg-black/30 dark:bg-orange-400/30' },
+        { left: '78%', top: '35%', size: 8, duration: 8.5, delay: 1.1, color: 'bg-orange-400/35' },
+        { left: '88%', top: '80%', size: 11, duration: 10.5, delay: 0.2, color: 'bg-black/25 dark:bg-orange-300/25' }
+    ];
+
     const socialLinks = [
         {
             name: 'GitHub',
@@ -26,8 +37,24 @@ const Hero = () => {
     ];
 
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center section-padding pt-20">
-            <div className="container-custom text-center">
+        <section id="home" className="relative overflow-hidden min-h-screen flex items-center justify-center section-padding pt-20">
+            <div className="absolute inset-0 pointer-events-none">
+                {particles.map((particle, index) => (
+                    <motion.span
+                        key={index}
+                        className={`absolute rounded-full ${particle.color}`}
+                        style={{
+                            left: particle.left,
+                            top: particle.top,
+                            width: particle.size,
+                            height: particle.size
+                        }}
+                        animate={{ y: [0, -28, 0], x: [0, 10, -10, 0], opacity: [0.2, 0.8, 0.2] }}
+                        transition={{ duration: particle.duration, delay: particle.delay, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                ))}
+            </div>
+            <div className="container-custom text-center relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -110,7 +137,7 @@ const Hero = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.2 }}
-                        className="flex justify-center items-center space-x-6"
+                        className="flex justify-center items-center space-x-6 mb-20"
                     >
                         {socialLinks.map((social, index) => (
                             <motion.a
@@ -134,7 +161,7 @@ const Hero = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 2 }}
-                    className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+                    className="absolute bottom-6 left-1/2 transform -translate-x-1/2"
                 >
                     <motion.div
                         animate={{ y: [0, 10, 0] }}
