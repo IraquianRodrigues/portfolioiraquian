@@ -61,7 +61,7 @@ const Hero = () => {
                         transition={{ delay: 0.6 }}
                         className="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mb-8"
                     >
-                        Desenvolvedor Full Stack
+                        Gestor de Automação e Especialista em N8N
                     </motion.h2>
 
                     {/* Description */}
@@ -71,8 +71,8 @@ const Hero = () => {
                         transition={{ delay: 0.8 }}
                         className="text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed"
                     >
-                        Apaixonado por criar experiências digitais incríveis e soluções inovadoras.
-                        Especializado em React, Next.js, TypeScript e tecnologias modernas.
+                        Lidero projetos de automação inteligente com N8N e IA para captação de leads,
+                        atendimento e eficiência operacional em negócios digitais.
                     </motion.p>
 
                     {/* CTA Buttons */}
@@ -92,7 +92,7 @@ const Hero = () => {
                         </motion.a>
 
                         <motion.a
-                            href="/iraquian.pdf"
+                            href="/Iraquian_Rodrigues_CV.pdf%20(1).pdf"
                             download="Iraquian_Rodrigues_CV.pdf"
                             target="_blank"
                             rel="noopener noreferrer"

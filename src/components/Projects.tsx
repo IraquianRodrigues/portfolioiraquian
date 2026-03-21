@@ -1,45 +1,60 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
+
+type Project = {
+    title: string;
+    description: string;
+    image?: string;
+    images?: string[];
+    technologies: string[];
+    liveUrl?: string;
+    githubUrl?: string;
+    featured: boolean;
+    premium?: boolean;
+    demoAccess?: {
+        login: string;
+        senha: string;
+    };
+};
 
 const Projects = () => {
-    const projects = [
+    const projects: Project[] = [
         {
-            title: 'AgendiFy',
-            description: 'Plataforma completa de agendamentos de serviços de estética, pagamentos e painel administrativo.',
-            image: '/portfolio.png',
-            technologies: ['React', 'Next.js', 'TypeScript', 'Stripe', 'NeonDB', 'Tailwind'],
-            liveUrl: 'https://agendify-rho.vercel.app',
-            githubUrl: 'https://github.com/IraquianRodrigues/agendify',
-            featured: true
+            title: 'CRM Profissional com N8N + IA',
+            description: 'Projeto premium de CRM com automações inteligentes, fluxos no N8N e recursos de IA para acelerar atendimento e operação comercial.',
+            images: ['/tela%20login.png', '/tela%20deashboard.png'],
+            technologies: ['Next.js', 'TypeScript', 'N8N', 'IA', 'Automação', 'CRM'],
+            liveUrl: 'https://odontovida.workflown8n.com.br/',
+            featured: true,
+            premium: true,
+            demoAccess: {
+                login: 'demo@demo.com.br',
+                senha: '12345678'
+            }
         },
         {
-            title: 'Landing Page Doula',
-            description: 'landing page de doula que fiz para a minha esposa.',
-            image: '/doula.png',
-            technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
-            liveUrl: 'https://cynthianicole.vercel.app',
-            githubUrl: 'https://github.com/IraquianRodrigues/cynthianicole',
-            featured: false
+            title: 'CRM Suporte WPP com N8N + IA',
+            description: 'CRM premium para suporte via WhatsApp com captação de leads automatizada por N8N e IA, com dashboard completo para operação comercial.',
+            images: ['/tela%20login%201%20wpp.png', '/tela%20login%20wpp.png'],
+            technologies: ['Next.js', 'Node.js', 'React', 'Tailwind CSS', 'N8N', 'IA', 'WhatsApp'],
+            liveUrl: 'https://dashboard-leads-eta.vercel.app/',
+            featured: true,
+            premium: true,
+            demoAccess: {
+                login: 'demo@demo.com.br',
+                senha: '12345678'
+            }
         },
         {
-            title: 'Linktree peça+açai',
-            description: 'Linktree para a loja peça+açai',
-            image: '/acai.png',
-            technologies: ['Next.js', 'TypeScript', 'Framer Motion', 'Tailwind CSS'],
-            liveUrl: 'https://linktree-alpha-sand.vercel.app',
-            githubUrl: 'https://github.com/IraquianRodrigues/linktree',
-            featured: false
-        },
-        {
-            title: 'Pizzaria Familia',
-            description: 'Cardápio digital para pizzaria com sistema de pedidos via WhatsApp.',
-            image: '/cardapio.png',
-            technologies: ['Next.js', 'TypeScript', 'Framer Motion', 'Tailwind CSS'],
-            liveUrl: 'https://pizzaria-familia.vercel.app',
-            githubUrl: 'https://github.com/IraquianRodrigues/PizzariaFamilia',
-            featured: true
+            title: 'Site da Empresa de Automação',
+            description: 'Site institucional premium da minha empresa de automação, destacando soluções com N8N e IA para geração de eficiência e escala.',
+            image: '/site.png',
+            technologies: ['Next.js', 'React', 'Node.js', 'Tailwind CSS', 'N8N', 'IA', 'Automação'],
+            liveUrl: 'https://automateai.workflown8n.com.br/',
+            featured: true,
+            premium: true
         }
     ];
 
@@ -68,7 +83,7 @@ const Projects = () => {
                     </h3>
 
                     <div className="grid lg:grid-cols-2 gap-8">
-                        {projects.filter(p => p.featured).map((project, index) => (
+                        {projects.filter((project) => project.featured).map((project, index) => (
                             <motion.div
                                 key={project.title}
                                 initial={{ opacity: 0, y: 50 }}
@@ -78,7 +93,18 @@ const Projects = () => {
                                 className="card-hover bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg"
                             >
                                 <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center overflow-hidden">
-                                    {project.image && project.image !== '/api/placeholder/400/250' ? (
+                                    {project.images && project.images.length > 1 ? (
+                                        <div className="grid grid-cols-2 w-full h-full">
+                                            {project.images.slice(0, 2).map((image, imageIndex) => (
+                                                <img
+                                                    key={`${project.title}-${imageIndex}`}
+                                                    src={image}
+                                                    alt={`${project.title} screenshot ${imageIndex + 1}`}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            ))}
+                                        </div>
+                                    ) : project.image && project.image !== '/api/placeholder/400/250' ? (
                                         <img
                                             src={project.image}
                                             alt={`${project.title} screenshot`}
@@ -90,6 +116,11 @@ const Projects = () => {
                                 </div>
 
                                 <div className="p-6">
+                                    {project.premium && (
+                                        <span className="inline-block mb-3 px-3 py-1 bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 rounded-full text-xs font-semibold">
+                                            PROJETO PREMIUM
+                                        </span>
+                                    )}
                                     <h4 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">
                                         {project.title}
                                     </h4>
@@ -109,30 +140,48 @@ const Projects = () => {
                                         ))}
                                     </div>
 
-                                    <div className="flex gap-4">
-                                        <motion.a
-                                            href={project.liveUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="button-primary flex items-center gap-2 text-sm"
-                                        >
-                                            <ExternalLink size={16} />
-                                            Ver Projeto
-                                        </motion.a>
+                                    {project.demoAccess && (
+                                        <div className="mb-6 p-4 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-900/40">
+                                            <p className="text-sm font-semibold text-emerald-700 dark:text-emerald-300 mb-2">
+                                                Acesso Demo
+                                            </p>
+                                            <p className="text-sm text-gray-700 dark:text-gray-300">
+                                                Login: <span className="font-semibold">{project.demoAccess.login}</span>
+                                            </p>
+                                            <p className="text-sm text-gray-700 dark:text-gray-300">
+                                                Senha: <span className="font-semibold">{project.demoAccess.senha}</span>
+                                            </p>
+                                        </div>
+                                    )}
 
-                                        <motion.a
-                                            href={project.githubUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="button-secondary flex items-center gap-2 text-sm"
-                                        >
-                                            <Github size={16} />
-                                            Código
-                                        </motion.a>
+                                    <div className="flex gap-4">
+                                        {project.liveUrl && (
+                                            <motion.a
+                                                href={project.liveUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                className="button-primary flex items-center gap-2 text-sm"
+                                            >
+                                                <ExternalLink size={16} />
+                                                Ver Projeto
+                                            </motion.a>
+                                        )}
+
+                                        {project.githubUrl && (
+                                            <motion.a
+                                                href={project.githubUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                className="button-secondary flex items-center gap-2 text-sm"
+                                            >
+                                                <Github size={16} />
+                                                Código
+                                            </motion.a>
+                                        )}
                                     </div>
                                 </div>
                             </motion.div>
@@ -157,9 +206,9 @@ const Projects = () => {
                                 className="card-hover bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg"
                             >
                                 <div className="h-40 bg-gradient-to-br from-green-500 to-blue-600 flex items-center justify-center overflow-hidden">
-                                    {project.image && project.image !== '/api/placeholder/400/250' ? (
+                                    {(project.image || project.images?.[0]) && (project.image || project.images?.[0]) !== '/api/placeholder/400/250' ? (
                                         <img
-                                            src={project.image}
+                                            src={project.image || project.images?.[0]}
                                             alt={`${project.title} screenshot`}
                                             className="w-full h-full object-cover"
                                         />
@@ -194,27 +243,31 @@ const Projects = () => {
                                     </div>
 
                                     <div className="flex gap-2">
-                                        <motion.a
-                                            href={project.liveUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="flex-1 button-primary text-center text-sm py-2"
-                                        >
-                                            Ver Projeto
-                                        </motion.a>
+                                        {project.liveUrl && (
+                                            <motion.a
+                                                href={project.liveUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                className="flex-1 button-primary text-center text-sm py-2"
+                                            >
+                                                Ver Projeto
+                                            </motion.a>
+                                        )}
 
-                                        <motion.a
-                                            href={project.githubUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="flex-1 button-secondary text-center text-sm py-2"
-                                        >
-                                            Código
-                                        </motion.a>
+                                        {project.githubUrl && (
+                                            <motion.a
+                                                href={project.githubUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                className="flex-1 button-secondary text-center text-sm py-2"
+                                            >
+                                                Código
+                                            </motion.a>
+                                        )}
                                     </div>
                                 </div>
                             </motion.div>

@@ -41,7 +41,7 @@ const About = () => {
                         Sobre <span className="gradient-text">Mim</span>
                     </h2>
                     <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                        Desenvolvedor apaixonado por tecnologia e inovação
+                        Gestor de automação com foco em N8N e inteligência artificial
                     </p>
                 </motion.div>
 
@@ -59,13 +59,11 @@ const About = () => {
                         </h3>
 
                         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                            Sou um desenvolvedor Full Stack em início de carreira, motivado por criar experiências digitais funcionais e agradáveis. Tenho contato e venho aprendendo tecnologias modernas como React, Next.js, TypeScript e Node.js, sempre buscando evoluir minhas habilidades e explorar novas soluções. Meu objetivo é crescer como profissional enquanto contribuo para projetos de forma colaborativa e criativa.
+                            Sou gestor de automação e especialista em N8N, com atuação prática na criação de fluxos inteligentes para captação de leads, atendimento e operação comercial. Desenvolvimento dashboards e plataformas modernas com React, Next.js, Node.js e Tailwind para entregar processos escaláveis, rápidos e orientados a resultado.
                         </p>
 
                         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                            Atualmente, estou focado em desenvolvimento web e mobile, criando
-                            aplicações escaláveis e performáticas. Acredito que a tecnologia
-                            deve ser acessível e útil para todos.
+                            Atualmente, meu foco é transformar processos manuais em operações automatizadas, conectando sistemas com N8N e IA para aumentar produtividade, previsibilidade e performance de negócio.
                         </p>
 
                         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
