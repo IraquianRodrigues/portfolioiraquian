@@ -73,9 +73,9 @@ const Footer = () => {
                     >
                         <h4 className="text-lg font-semibold">Contato</h4>
                         <div className="space-y-2 text-neutral-400">
-                            <p>iraquianrodrigues@gmail.com</p>
-                            <p>+84 999642564</p>
-                            <p>Mossoró, RN - Brasil</p>
+                            <p>iraquianrodrigues2025@gmail.com</p>
+                            <p>(84) 99673-5293</p>
+                            <p>Areia Branca, RN - Brasil</p>
                         </div>
                     </motion.div>
                 </div>

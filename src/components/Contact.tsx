@@ -39,17 +39,38 @@ const Contact = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simular envio do formulário
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/iraquianrodrigues2025@gmail.com", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    subject: formData.subject,
+                    message: formData.message,
+                })
+            });
 
-        setIsSubmitting(false);
-        setIsSubmitted(true);
+            if (response.ok) {
+                setIsSubmitting(false);
+                setIsSubmitted(true);
+                
+                // Reset form
+                setFormData({ name: '', email: '', subject: '', message: '' });
 
-        // Reset form
-        setFormData({ name: '', email: '', subject: '', message: '' });
-
-        // Reset success message after 5 seconds
-        setTimeout(() => setIsSubmitted(false), 5000);
+                // Reset success message after 5 seconds
+                setTimeout(() => setIsSubmitted(false), 5000);
+            } else {
+                throw new Error("Erro ao enviar mensagem");
+            }
+        } catch (error) {
+            console.error("Erro no envio do formulário:", error);
+            setIsSubmitting(false);
+            alert("Ocorreu um erro ao enviar a mensagem. Tente novamente mais tarde.");
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
