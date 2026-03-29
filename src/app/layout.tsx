@@ -86,6 +86,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -101,6 +103,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} bg-orange-50 dark:bg-black text-neutral-900 dark:text-neutral-100 antialiased`}>
         {children}
+        <GoogleAnalytics gaId="G-50GWKXQFKK" />
       </body>
     </html>
   );
