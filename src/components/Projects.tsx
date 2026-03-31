@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, KeyRound } from 'lucide-react';
 
 type Project = {
     title: string;
@@ -38,7 +38,7 @@ const Projects = () => {
             title: 'CRM Suporte WPP com N8N + IA',
             description: 'CRM premium para suporte via WhatsApp com captação de leads automatizada por N8N e IA, com dashboard completo para operação comercial.',
             images: ['/tela%20login%201%20wpp.png', '/tela%20login%20wpp.png'],
-            technologies: ['Next.js', 'Node.js', 'React', 'Tailwind CSS', 'N8N', 'IA', 'WhatsApp'],
+            technologies: ['Next.js', 'Node.js', 'React', 'Tailwind', 'N8N', 'IA', 'WhatsApp'],
             liveUrl: 'https://dashboard-leads-eta.vercel.app/',
             featured: true,
             premium: true,
@@ -51,234 +51,190 @@ const Projects = () => {
             title: 'Site da Empresa de Automação',
             description: 'Site institucional premium da minha empresa de automação, destacando soluções com N8N e IA para geração de eficiência e escala.',
             image: '/site.png',
-            technologies: ['Next.js', 'React', 'Node.js', 'Tailwind CSS', 'N8N', 'IA', 'Automação'],
+            technologies: ['Next.js', 'React', 'Node.js', 'Tailwind', 'N8N', 'IA'],
             liveUrl: 'https://automateai.workflown8n.com.br/',
             featured: true,
             premium: true
         }
     ];
 
+    const containerAnim = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+    };
+
+    const cardAnim = {
+        hidden: { opacity: 0, y: 32 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+    };
+
     return (
-        <section id="projects" className="section-padding bg-orange-50 dark:bg-black">
+        <section id="projects" className="section-padding bg-white dark:bg-neutral-950 relative">
+            <div className="section-divider absolute top-0 left-0 right-0" />
+
             <div className="container-custom">
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.7 }}
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl font-bold mb-4">
+                    <div className="flex justify-center mb-4">
+                        <span className="section-badge">Portfólio</span>
+                    </div>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4">
                         Meus <span className="gradient-text">Projetos</span>
                     </h2>
-                    <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                        Alguns dos projetos que desenvolvi para demonstrar minhas habilidades
+                    <p className="text-base text-neutral-500 dark:text-neutral-400 max-w-lg mx-auto">
+                        Soluções reais com automação, N8N e IA que geram resultado
                     </p>
                 </motion.div>
 
-                {/* Featured Projects */}
-                <div className="mb-16">
-                    <h3 className="text-2xl font-semibold mb-8 text-center">
-                        Projetos <span className="gradient-text">Destaque</span>
-                    </h3>
-
-                    <div className="grid lg:grid-cols-2 gap-8">
-                        {projects.filter((project) => project.featured).map((project, index) => (
-                            <motion.div
-                                key={project.title}
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: index * 0.2 }}
-                                viewport={{ once: true }}
-                                className="card-hover bg-white dark:bg-neutral-900 rounded-xl overflow-hidden shadow-lg border border-orange-100 dark:border-neutral-800"
-                            >
-                                <div className="h-48 bg-gradient-to-br from-orange-500 to-black flex items-center justify-center overflow-hidden">
-                                    {project.images && project.images.length > 1 ? (
-                                        <div className="grid grid-cols-2 w-full h-full">
-                                            {project.images.slice(0, 2).map((image, imageIndex) => (
+                <motion.div
+                    variants={containerAnim}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="grid lg:grid-cols-2 gap-6"
+                >
+                    {projects.map((project, index) => (
+                        <motion.div
+                            key={project.title}
+                            variants={cardAnim}
+                            className={`card-premium group ${index === projects.length - 1 && projects.length % 2 !== 0 ? 'lg:col-span-2 lg:max-w-2xl lg:mx-auto' : ''}`}
+                        >
+                            {/* Image */}
+                            <div className="relative h-52 overflow-hidden">
+                                {project.images && project.images.length > 1 ? (
+                                    <div className="grid grid-cols-2 w-full h-full">
+                                        {project.images.slice(0, 2).map((image, imageIndex) => (
+                                            <div key={`${project.title}-${imageIndex}`} className="relative overflow-hidden">
                                                 <img
-                                                    key={`${project.title}-${imageIndex}`}
                                                     src={image}
                                                     alt={`${project.title} screenshot ${imageIndex + 1}`}
-                                                    className="w-full h-full object-cover"
+                                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                                 />
-                                            ))}
-                                        </div>
-                                    ) : project.image && project.image !== '/api/placeholder/400/250' ? (
-                                        <img
-                                            src={project.image}
-                                            alt={`${project.title} screenshot`}
-                                            className="w-full h-full object-cover"
-                                        />
-                                    ) : (
-                                        <span className="text-white text-lg font-medium">Imagem do Projeto</span>
-                                    )}
-                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                ) : project.image ? (
+                                    <img
+                                        src={project.image}
+                                        alt={`${project.title} screenshot`}
+                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                ) : (
+                                    <div className="w-full h-full bg-gradient-to-br from-orange-500 to-neutral-900 flex items-center justify-center">
+                                        <span className="text-white/60 text-sm">Preview</span>
+                                    </div>
+                                )}
 
-                                <div className="p-6">
-                                    {project.premium && (
-                                        <span className="inline-block mb-3 px-3 py-1 bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 rounded-full text-xs font-semibold">
-                                            PROJETO PREMIUM
+                                {/* Premium Badge */}
+                                {project.premium && (
+                                    <div className="absolute top-3 left-3">
+                                        <span
+                                            className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white rounded-md"
+                                            style={{
+                                                background: 'linear-gradient(135deg, #f97316, #ea580c)',
+                                                backgroundSize: '200% 100%',
+                                                animation: 'shimmer 3s linear infinite',
+                                            }}
+                                        >
+                                            Premium
                                         </span>
-                                    )}
-                                    <h4 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">
-                                        {project.title}
-                                    </h4>
-
-                                    <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                                        {project.description}
-                                    </p>
-
-                                    <div className="flex flex-wrap gap-2 mb-6">
-                                        {project.technologies.map((tech) => (
-                                            <span
-                                                key={tech}
-                                                className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
                                     </div>
+                                )}
 
-                                    {project.demoAccess && (
-                                        <div className="mb-6 p-4 rounded-lg bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-900/40">
-                                            <p className="text-sm font-semibold text-orange-700 dark:text-orange-300 mb-2">
+                                {/* Overlay on hover */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            </div>
+
+                            {/* Content */}
+                            <div className="p-6">
+                                <h4 className="text-lg font-bold mb-2 text-neutral-900 dark:text-neutral-100">
+                                    {project.title}
+                                </h4>
+
+                                <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-4 leading-relaxed line-clamp-2">
+                                    {project.description}
+                                </p>
+
+                                {/* Tech Tags */}
+                                <div className="flex flex-wrap gap-1.5 mb-5">
+                                    {project.technologies.map((tech) => (
+                                        <span
+                                            key={tech}
+                                            className="px-2.5 py-1 text-[11px] font-medium bg-orange-50 dark:bg-orange-950/20 text-orange-700 dark:text-orange-400 rounded-md border border-orange-200/30 dark:border-orange-900/20"
+                                        >
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                {/* Demo Access */}
+                                {project.demoAccess && (
+                                    <div className="mb-5 p-3.5 rounded-lg bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-100 dark:border-neutral-800/50">
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <KeyRound size={13} className="text-orange-500" />
+                                            <span className="text-xs font-semibold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider">
                                                 Acesso Demo
-                                            </p>
-                                            <p className="text-sm text-gray-700 dark:text-gray-300">
-                                                Login: <span className="font-semibold">{project.demoAccess.login}</span>
-                                            </p>
-                                            <p className="text-sm text-gray-700 dark:text-gray-300">
-                                                Senha: <span className="font-semibold">{project.demoAccess.senha}</span>
-                                            </p>
+                                            </span>
                                         </div>
+                                        <div className="grid grid-cols-2 gap-2 text-xs">
+                                            <div>
+                                                <span className="text-neutral-400">Login: </span>
+                                                <span className="font-mono font-semibold text-neutral-700 dark:text-neutral-300">
+                                                    {project.demoAccess.login}
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <span className="text-neutral-400">Senha: </span>
+                                                <span className="font-mono font-semibold text-neutral-700 dark:text-neutral-300">
+                                                    {project.demoAccess.senha}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* Actions */}
+                                <div className="flex gap-3">
+                                    {project.liveUrl && (
+                                        <motion.a
+                                            href={project.liveUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            whileHover={{ scale: 1.03 }}
+                                            whileTap={{ scale: 0.97 }}
+                                            className="button-primary text-sm py-2.5 px-5 flex-1 text-center"
+                                        >
+                                            <ExternalLink size={15} />
+                                            Ver Projeto
+                                        </motion.a>
                                     )}
 
-                                    <div className="flex gap-4">
-                                        {project.liveUrl && (
-                                            <motion.a
-                                                href={project.liveUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                whileHover={{ scale: 1.05 }}
-                                                whileTap={{ scale: 0.95 }}
-                                                className="button-primary flex items-center gap-2 text-sm"
-                                            >
-                                                <ExternalLink size={16} />
-                                                Ver Projeto
-                                            </motion.a>
-                                        )}
-
-                                        {project.githubUrl && (
-                                            <motion.a
-                                                href={project.githubUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                whileHover={{ scale: 1.05 }}
-                                                whileTap={{ scale: 0.95 }}
-                                                className="button-secondary flex items-center gap-2 text-sm"
-                                            >
-                                                <Github size={16} />
-                                                Código
-                                            </motion.a>
-                                        )}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* All Projects Grid */}
-                <div>
-                    <h3 className="text-2xl font-semibold mb-8 text-center">
-                        Todos os <span className="gradient-text">Projetos</span>
-                    </h3>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {projects.map((project, index) => (
-                            <motion.div
-                                key={project.title}
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: index * 0.1 }}
-                                viewport={{ once: true }}
-                                className="card-hover bg-white dark:bg-neutral-900 rounded-xl overflow-hidden shadow-lg border border-orange-100 dark:border-neutral-800"
-                            >
-                                <div className="h-40 bg-gradient-to-br from-orange-500 to-black flex items-center justify-center overflow-hidden">
-                                    {(project.image || project.images?.[0]) && (project.image || project.images?.[0]) !== '/api/placeholder/400/250' ? (
-                                        <img
-                                            src={project.image || project.images?.[0]}
-                                            alt={`${project.title} screenshot`}
-                                            className="w-full h-full object-cover"
-                                        />
-                                    ) : (
-                                        <span className="text-white text-sm font-medium">Imagem do Projeto</span>
+                                    {project.githubUrl && (
+                                        <motion.a
+                                            href={project.githubUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            whileHover={{ scale: 1.03 }}
+                                            whileTap={{ scale: 0.97 }}
+                                            className="button-secondary text-sm py-2.5 px-5 flex-1 text-center"
+                                        >
+                                            <Github size={15} />
+                                            Código
+                                        </motion.a>
                                     )}
                                 </div>
-
-                                <div className="p-4">
-                                    <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">
-                                        {project.title}
-                                    </h4>
-
-                                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">
-                                        {project.description}
-                                    </p>
-
-                                    <div className="flex flex-wrap gap-1 mb-4">
-                                        {project.technologies.slice(0, 3).map((tech) => (
-                                            <span
-                                                key={tech}
-                                                className="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded text-xs"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                        {project.technologies.length > 3 && (
-                                            <span className="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded text-xs">
-                                                +{project.technologies.length - 3}
-                                            </span>
-                                        )}
-                                    </div>
-
-                                    <div className="flex gap-2">
-                                        {project.liveUrl && (
-                                            <motion.a
-                                                href={project.liveUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                whileHover={{ scale: 1.05 }}
-                                                whileTap={{ scale: 0.95 }}
-                                                className="flex-1 button-primary text-center text-sm py-2"
-                                            >
-                                                Ver Projeto
-                                            </motion.a>
-                                        )}
-
-                                        {project.githubUrl && (
-                                            <motion.a
-                                                href={project.githubUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                whileHover={{ scale: 1.05 }}
-                                                whileTap={{ scale: 0.95 }}
-                                                className="flex-1 button-secondary text-center text-sm py-2"
-                                            >
-                                                Código
-                                            </motion.a>
-                                        )}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-
-
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
         </section>
     );
 };
 
-export default Projects; 
+export default Projects;

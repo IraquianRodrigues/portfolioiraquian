@@ -4,8 +4,6 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Experience from '@/components/Experience';
 import Skills from '@/components/Skills';
-import Projects from '@/components/Projects';
-import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 // Lazy loading para componentes pesados
@@ -15,20 +13,19 @@ const LazyContact = lazy(() => import('@/components/Contact'));
 // Loading component
 const LoadingSpinner = () => (
   <div className="flex justify-center items-center py-20">
-    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+    <div className="animate-spin rounded-full h-10 w-10 border-2 border-orange-200 border-t-orange-500"></div>
   </div>
 );
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen noise-overlay">
       <Navbar />
       <Hero />
       <About />
       <Experience />
       <Skills />
 
-      {/* Lazy loading para melhorar performance */}
       <Suspense fallback={<LoadingSpinner />}>
         <LazyProjects />
       </Suspense>
